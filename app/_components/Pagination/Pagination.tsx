@@ -14,9 +14,9 @@ const Pagination = ({ searchResults }: PaginationProps) => {
   const pageSize = 25;
   const totalPages = Math.ceil(total / pageSize);
 
-  const urlParams = new URLSearchParams(next?.split("?")[1]);
-  const fromValue = parseInt(urlParams.get("from") || "0", 10);
   // Todo: Use current page for styling active link
+  // const urlParams = new URLSearchParams(next?.split("?")[1]);
+  // const fromValue = parseInt(urlParams.get("from") || "0", 10);
   // const currentPage = fromValue / pageSize;
 
   return (
