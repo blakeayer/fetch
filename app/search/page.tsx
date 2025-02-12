@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useSearch } from '@/lib/useSearch';
@@ -8,7 +8,7 @@ import Pagination from '@/components/Pagination';
 import SearchResults from '@/components/SearchResults';
 import SearchForm from '@/components/SearchForm';
 
-const SearchPage = () => {
+const SearchContent = () => {
   const searchParams = useSearchParams();
   const requestQuery = searchParams.toString()
     ? `?${searchParams.toString()}`
@@ -18,6 +18,17 @@ const SearchPage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>There was an error fetching results: {error.message}</div>;
 
+  return (
+    <>
+      <SearchForm />
+      {data && <Pagination searchResults={data} />}
+      <SearchResults resultIds={data?.resultIds} />
+      {data && <Pagination searchResults={data} />}
+    </>
+  );
+};
+
+const SearchPage = () => {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen max-w-screen p-8 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 items-center sm:items-start">
@@ -29,12 +40,9 @@ const SearchPage = () => {
             See My Favories
           </Link>
         </nav>
-        {/* {requestQuery && <p>{requestQuery}</p>} */}
-        {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
-        <SearchForm />
-        {data && <Pagination searchResults={data} />}
-        <SearchResults resultIds={data?.resultIds} />
-        {data && <Pagination searchResults={data} />}
+        <Suspense fallback={<div>Loading search results...</div>}>
+          <SearchContent />
+        </Suspense>
       </main>
     </div>
   );
