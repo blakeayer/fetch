@@ -61,7 +61,7 @@ const SearchForm = () => {
   const handleAllChange = (checked: boolean) => {
     if (checked) {
       // When All is checked, uncheck all breeds
-      const newBreedPreferences = breeds?.reduce(
+      const newBreedPreferences = Object.keys(syncedState.breedPreferences || {}).reduce(
         (acc, breed) => ({
           ...acc,
           [breed]: false,
