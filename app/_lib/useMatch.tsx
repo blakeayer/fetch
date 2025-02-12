@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ResultIds, Dog } from '@/models';
+import { ResultIds } from '@/models';
 import { fetchApi } from './fetchApi';
 
 interface MatchResponse {

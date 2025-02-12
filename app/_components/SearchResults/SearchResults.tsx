@@ -14,7 +14,7 @@ const SearchResults = ({ resultIds }: { resultIds: ResultIds | undefined }) => {
       <h3>Search Results:</h3>
       {data && (
         <ul className="grid grid-cols-3 gap-8">
-          {data.map((result, index) => (
+          {data.map((result) => (
             <li className="w-full" key={result.id}>
               <SearchResult result={result} />
             </li>

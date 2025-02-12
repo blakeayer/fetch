@@ -73,7 +73,7 @@ const SearchForm = () => {
   };
 
   const handleBreedChange = (breed: string, checked: boolean) => {
-    setValue(`breedPreferences.${breed}` as any, checked, { shouldDirty: true });
+    setValue(`breedPreferences.${breed}` as `breedPreferences.${string}`, checked, { shouldDirty: true });
 
     if (checked) {
       // When any breed is checked, uncheck All

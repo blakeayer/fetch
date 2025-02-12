@@ -12,7 +12,7 @@ import Link from 'next/link';
 const FavoritesPage = () => {
   const { favoriteIds } = useFavoritesStore();
   const { data, isLoading, error } = useDogs(favoriteIds);
-  const { getMatch, isLoading: isMatchLoading, error: matchError, data: matchData } = useMatch();
+  const { getMatch, isLoading: isMatchLoading, error: matchError } = useMatch();
 
   const [matchedDog, setMatchedDog] = useState<Dog | null>(null);
   const [fetchingDog, setFetchingDog] = useState(false);

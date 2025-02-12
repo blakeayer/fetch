@@ -16,9 +16,8 @@ const Pagination = ({ searchResults }: PaginationProps) => {
 
   const urlParams = new URLSearchParams(next?.split("?")[1]);
   const fromValue = parseInt(urlParams.get("from") || "0", 10);
-  const currentPage = fromValue / pageSize;
-
-  const urls = next?.split("&");
+  // Todo: Use current page for styling active link
+  // const currentPage = fromValue / pageSize;
 
   return (
     <nav>
