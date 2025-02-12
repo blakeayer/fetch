@@ -97,8 +97,6 @@ const SearchForm = () => {
 
   return (
     <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
-      <pre>FORM STATE: {JSON.stringify(formState, null, 2)}</pre>
-
       {/* ALL BREEDS */}
       <label className="flex gap-2">
         <input
@@ -110,7 +108,7 @@ const SearchForm = () => {
       </label>
 
       {/* INDIVIDUAL BREEDS */}
-      <ul>
+      <ul className='grid grid-cols-4 gap-2'>
         {breeds?.map((breed) => (
           <li key={breed}>
             <label className="flex gap-2">
@@ -192,4 +190,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-
