@@ -5,9 +5,10 @@ interface PreferencesState {
   storeState: Partial<PreferencesData>;
   updateStoreState: (newState: Partial<PreferencesData>) => void;
   resetStoreState: () => void;
+  initializeBreedPreferences: (breeds: string[]) => void;
 }
 
-const defaultFormState: Partial<PreferencesData> = {
+export const defaultFormState: Partial<PreferencesData> = {
   sortBy: 'breed',
   orderBy: 'asc',
   minAge: 0,
@@ -26,4 +27,17 @@ export const usePreferencesStore = create<PreferencesState>((set) => ({
       },
     })),
   resetStoreState: () => set({ storeState: defaultFormState }),
+  initializeBreedPreferences: (breeds) =>
+    set((state) => ({
+      storeState: {
+        ...state.storeState,
+        breedPreferences: breeds.reduce(
+          (acc, breed) => ({
+            ...acc,
+            [breed]: false,
+          }),
+          {}
+        ),
+      },
+    })),
 }));

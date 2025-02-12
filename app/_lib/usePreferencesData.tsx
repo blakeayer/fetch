@@ -33,7 +33,7 @@ export function usePreferencesData() {
       });
     }
 
-    return queryParts.length > 0 ? `?${queryParts.join('&')}` : '';
+    return queryParts.length > 0 ? `${queryParts.join('&')}` : '';
   };
 
   return {
