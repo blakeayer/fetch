@@ -1,11 +1,10 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 import { PreferencesData } from '@/models';
 
 interface PreferencesState {
-  formState: Partial<PreferencesData>;
-  updateFormState: (newState: Partial<PreferencesData>) => void;
-  resetFormState: () => void;
+  storeState: Partial<PreferencesData>;
+  updateStoreState: (newState: Partial<PreferencesData>) => void;
+  resetStoreState: () => void;
 }
 
 const defaultFormState: Partial<PreferencesData> = {
@@ -17,21 +16,14 @@ const defaultFormState: Partial<PreferencesData> = {
   breedPreferences: {},
 };
 
-export const preferencesStore = create<PreferencesState>()(
-  persist(
-    (set) => ({
-      formState: defaultFormState,
-      updateFormState: (newState) =>
-        set((state) => ({
-          formState: {
-            ...state.formState,
-            ...newState,
-          },
-        })),
-      resetFormState: () => set({ formState: defaultFormState }),
-    }),
-    {
-      name: 'preferences-storage',
-    }
-  )
-);
+export const usePreferencesStore = create<PreferencesState>((set) => ({
+  storeState: defaultFormState,
+  updateStoreState: (newState) =>
+    set((state) => ({
+      storeState: {
+        ...state.storeState,
+        ...newState,
+      },
+    })),
+  resetStoreState: () => set({ storeState: defaultFormState }),
+}));

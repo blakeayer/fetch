@@ -7,6 +7,7 @@ import { useSearch } from '@/lib/useSearch';
 import Pagination from '@/components/Pagination';
 import SearchPreferences from '@/components/SearchPreferences';
 import SearchResults from '@/components/SearchResults';
+import SearchForm from '@/components/SearchForm';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
@@ -31,7 +32,8 @@ const SearchPage = () => {
         </nav>
         {/* {requestQuery && <p>{requestQuery}</p>} */}
         {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
-        <SearchPreferences />
+        <SearchForm />
+        {/* <SearchPreferences /> */}
         {data && <Pagination searchResults={data} />}
         <SearchResults resultIds={data?.resultIds} />
         {data && <Pagination searchResults={data} />}
