@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ResultIds, Dog } from '@/models';
+import { fetchApi } from './fetchApi';
 
 interface MatchResponse {
   match: string;
@@ -22,13 +23,9 @@ export function useMatch(): UseMatchReturn {
       setIsLoading(true);
       setError(null);
 
-      const response = await fetch('https://frontend-take-home-service.fetch.com/dogs/match', {
+      const response = await fetchApi('/dogs/match', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(favoriteIds),
-        credentials: 'include',
       });
 
       if (!response.ok) {

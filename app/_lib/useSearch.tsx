@@ -1,6 +1,7 @@
 // Used to send GET request with current queries to dogs/search endpoint
 import useSWR from "swr";
 import { SearchResults } from "@/models";
+import { fetchApi } from "./fetchApi";
 
 const searchFetcher = (url: string) =>
   fetch(url, {
@@ -9,10 +10,15 @@ const searchFetcher = (url: string) =>
   }).then((r) => r.json());
 
 export function useSearch(requestQuery: string) {
-  // console.log("requestQuery: ", requestQuery)
   const { data, error, isLoading } = useSWR<SearchResults | undefined>(
-    `https://frontend-take-home-service.fetch.com/dogs/search${requestQuery}`,
-    searchFetcher
+    `/dogs/search${requestQuery}`,
+    async (url: string) => {
+      const response = await fetchApi(url);
+      if (!response.ok) {
+        throw new Error('Failed to fetch search results');
+      }
+      return response.json();
+    }
   );
   return {
     data,

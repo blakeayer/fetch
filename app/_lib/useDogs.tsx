@@ -1,6 +1,7 @@
 // Used to send POST request to /dogs endpoint
 import { useState, useEffect } from "react";
 import { ResultIds, Dog } from "@/models";
+import { fetchApi } from "./fetchApi";
 
 export function useDogs(resultIds: ResultIds) {
   const [data, setData] = useState<Dog[]>([]);
@@ -11,17 +12,10 @@ export function useDogs(resultIds: ResultIds) {
     const fetchDogs = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "https://frontend-take-home-service.fetch.com/dogs",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(resultIds),
-            credentials: "include",
-          }
-        );
+        const response = await fetchApi("/dogs", {
+          method: "POST",
+          body: JSON.stringify(resultIds),
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch data");
