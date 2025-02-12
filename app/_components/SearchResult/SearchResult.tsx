@@ -1,10 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { Dog } from '@/models';
+import { useFavoritesStore } from '@/stores/favorites-store';
 
 const SearchResult = ({ result }: { result: Dog }) => {
+  const { isFavorite, toggleFavorite } = useFavoritesStore();
   return (
-    <div className="p-5">
+    <button
+      type="button"
+      onClick={() => toggleFavorite(result.id)}
+      className={`p-5 w-full rounded ${isFavorite(result.id) ? 'bg-green-500' : ''}`}
+    >
       <div className="relative h-48 w-full">
         <Image
           fill
@@ -14,13 +20,14 @@ const SearchResult = ({ result }: { result: Dog }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div>
+      <div className="relative">
         <div>Name: {result.name}</div>
         <div>Age: {result.age}</div>
         <div>Breed: {result.breed}</div>
         <div>Zip Code: {result.zip_code}</div>
+        {isFavorite(result.id) && <span className="absolute bottom-0 right-0">❤️</span>}
       </div>
-    </div>
+    </button>
   );
 };
 

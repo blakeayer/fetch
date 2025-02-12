@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useSearch } from '@/lib/useSearch';
 import Pagination from '@/components/Pagination';
@@ -20,6 +21,14 @@ const SearchPage = () => {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen max-w-screen p-8 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 items-center sm:items-start">
+        <nav>
+          <Link
+            className="rounded-full p-4 border border-solid border-black/[.08] dark:border-white/[.145] transition-colors items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+            href={'/favorites'}
+          >
+            See My Favories
+          </Link>
+        </nav>
         {/* {requestQuery && <p>{requestQuery}</p>} */}
         {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
         <SearchPreferences />
