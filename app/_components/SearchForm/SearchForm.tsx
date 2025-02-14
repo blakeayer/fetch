@@ -98,11 +98,13 @@ const SearchForm = () => {
   return (
     <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
       {/* ALL BREEDS */}
-      <label className="flex gap-2">
+      <label className="flex gap-2 items-center" htmlFor="all">
         <input
+          id="all"
           type="checkbox"
           {...register('all')}
           onChange={(e) => handleAllChange(e.target.checked)}
+          className="checkbox w-4 h-4 cursor-pointer"
         />
         All
       </label>
@@ -111,11 +113,12 @@ const SearchForm = () => {
       <ul className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
         {breeds?.map((breed) => (
           <li key={breed}>
-            <label className="flex gap-2">
+            <label className="flex gap-2 items-center" htmlFor={breed}>
               <input
+                id={breed}
                 type="checkbox"
                 {...register(`breedPreferences.${breed}`)}
-                className="checkbox"
+                className="checkbox w-4 h-4 cursor-pointer"
                 onChange={(e) => handleBreedChange(breed, e.target.checked)}
               />
               <span className="capitalize">{breed.toLowerCase()}</span>
@@ -161,9 +164,10 @@ const SearchForm = () => {
         <span>Order By:</span>
         <div className="flex gap-4">
           {Object.values(OrderByEnum.enum).map((value) => (
-            <label key={value} className="flex items-center gap-2 capitalize">
+            <label htmlFor={value} key={value} className="flex items-center gap-2 capitalize">
               <input
-                className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg"
+              id={value}
+                className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg cursor-pointer"
                 type="radio"
                 {...register('orderBy')}
                 value={value}
