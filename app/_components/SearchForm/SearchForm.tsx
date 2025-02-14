@@ -96,7 +96,9 @@ const SearchForm = () => {
   };
 
   return (
-    <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form aria-labelledby="form-heading" className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
+      <h2 id="form-heading" className="text-2xl font-bold text-center">Search Preferences</h2>
+      <p>Breeds:</p>
       {/* ALL BREEDS */}
       <label className="flex gap-2 items-center" htmlFor="all">
         <input
