@@ -29,7 +29,7 @@ const Login = () => {
         </div>
 
         <input
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-4"
           type="submit"
           disabled={formState.isSubmitting}
           value={formState.isSubmitting ? 'Logging in...' : 'Login'}

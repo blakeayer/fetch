@@ -13,7 +13,7 @@ const SearchResults = ({ resultIds }: { resultIds: ResultIds | undefined }) => {
     <div className="w-full">
       <h3>Search Results:</h3>
       {data && (
-        <ul className="grid grid-cols-3 gap-8">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.map((result) => (
             <li className="w-full" key={result.id}>
               <SearchResult result={result} />

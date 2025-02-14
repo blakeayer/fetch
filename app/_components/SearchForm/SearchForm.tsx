@@ -108,7 +108,7 @@ const SearchForm = () => {
       </label>
 
       {/* INDIVIDUAL BREEDS */}
-      <ul className='grid grid-cols-4 gap-2'>
+      <ul className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
         {breeds?.map((breed) => (
           <li key={breed}>
             <label className="flex gap-2">
@@ -176,7 +176,7 @@ const SearchForm = () => {
 
       {/* SUBMIT */}
       <button
-        className="flex rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-4"
         type="submit"
       >
         Find My Perfect Dog
