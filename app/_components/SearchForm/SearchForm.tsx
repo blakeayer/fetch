@@ -130,7 +130,7 @@ const SearchForm = () => {
         <input
           type="number"
           {...register('minAge', { valueAsNumber: true })}
-          className="border rounded px-2"
+          className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded"
         />
       </label>
 
@@ -140,14 +140,14 @@ const SearchForm = () => {
         <input
           type="number"
           {...register('maxAge', { valueAsNumber: true })}
-          className="border rounded px-2"
+          className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded"
         />
       </label>
 
       {/* SORT BY */}
       <label className="flex gap-2">
         Sort By:
-        <select {...register('sortBy')} className="capitalize">
+        <select {...register('sortBy')} className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded capitalize">
           {Object.values(SortByEnum.enum).map((value) => (
             <option key={value} value={value}>
               {value}
@@ -162,7 +162,12 @@ const SearchForm = () => {
         <div className="flex gap-4">
           {Object.values(OrderByEnum.enum).map((value) => (
             <label key={value} className="flex items-center gap-2 capitalize">
-              <input type="radio" {...register('orderBy')} value={value} />
+              <input
+                className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded"
+                type="radio"
+                {...register('orderBy')}
+                value={value}
+              />
               {value}
             </label>
           ))}
