@@ -9,14 +9,14 @@ const SearchResult = ({ result }: { result: Dog }) => {
     <button
       type="button"
       onClick={() => toggleFavorite(result.id)}
-      className={`p-5 w-full rounded ${isFavorite(result.id) ? 'bg-green-500' : ''}`}
+      className={`p-5 w-full rounded-lg ${isFavorite(result.id) ? 'bg-zinc-600' : 'bg-zinc-800'}`}
     >
-      <div className="relative h-48 w-full">
+      <div className="relative aspect-square w-full">
         <Image
           fill
           src={result.img}
           alt={result.name}
-          className="object-cover"
+          className="object-cover rounded-lg"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
