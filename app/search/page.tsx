@@ -31,7 +31,7 @@ const SearchContent = () => {
 const SearchPage = () => {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen max-w-screen p-8 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 items-center sm:items-start">
+      <main className="flex flex-col gap-8 items-center sm:items-start w-full">
         <nav>
           <Link
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-4"

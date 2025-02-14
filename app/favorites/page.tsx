@@ -59,7 +59,7 @@ const FavoritesPage = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <main className="flex flex-col p-20 gap-8">
+    <main className="flex flex-col p-20 gap-8 w-full">
       <nav className="self-start">
         <Link
           href="/search"
