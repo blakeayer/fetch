@@ -9,7 +9,7 @@ const SearchResult = ({ result }: { result: Dog }) => {
     <button
       type="button"
       onClick={() => toggleFavorite(result.id)}
-      className={`p-5 w-full rounded-lg ${isFavorite(result.id) ? 'bg-zinc-600' : 'bg-zinc-800'}`}
+      className={`p-5 w-full rounded-lg ${isFavorite(result.id) ? 'bg-blue-700' : 'bg-zinc-800'}`}
     >
       <div className="relative aspect-square w-full">
         <Image

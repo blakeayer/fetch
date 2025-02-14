@@ -125,7 +125,7 @@ const SearchForm = () => {
       </ul>
 
       {/* MIN AGE */}
-      <label className="flex gap-2">
+      <label className="flex gap-2 items-center">
         Min Age:
         <input
           type="number"
@@ -135,7 +135,7 @@ const SearchForm = () => {
       </label>
 
       {/* MAX AGE */}
-      <label className="flex gap-2">
+      <label className="flex gap-2 items-center">
         Max Age:
         <input
           type="number"
@@ -145,7 +145,7 @@ const SearchForm = () => {
       </label>
 
       {/* SORT BY */}
-      <label className="flex gap-2">
+      <label className="flex gap-2 items-center">
         Sort By:
         <select {...register('sortBy')} className="bg-slate-100 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg capitalize">
           {Object.values(SortByEnum.enum).map((value) => (
