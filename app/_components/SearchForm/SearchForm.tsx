@@ -20,12 +20,12 @@ const SearchForm = () => {
     setSyncedState(storeState);
   }, [storeState]);
 
-  // Initialize breed preferences when breeds data is loaded
+  // Initialize breed preferences when breeds data is loaded, but only if they haven't been initialized yet
   useEffect(() => {
-    if (breeds) {
+    if (breeds && (!storeState.breedPreferences || Object.keys(storeState.breedPreferences).length === 0)) {
       initializeBreedPreferences(breeds);
     }
-  }, [breeds, initializeBreedPreferences]);
+  }, [breeds, initializeBreedPreferences, storeState.breedPreferences]);
 
   const { register, formState, handleSubmit, reset, setValue } = useForm<PreferencesData>({
     resolver: zodResolver(searchPreferencesSchema),
