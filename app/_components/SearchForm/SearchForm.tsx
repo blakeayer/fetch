@@ -27,7 +27,7 @@ const SearchForm = () => {
     }
   }, [breeds, initializeBreedPreferences, storeState.breedPreferences]);
 
-  const { register, formState, handleSubmit, reset, setValue } = useForm<PreferencesData>({
+  const { register, formState, handleSubmit, reset, setValue, getValues } = useForm<PreferencesData>({
     resolver: zodResolver(searchPreferencesSchema),
     defaultValues: syncedState,
   });
@@ -61,7 +61,8 @@ const SearchForm = () => {
   const handleAllChange = (checked: boolean) => {
     if (checked) {
       // When All is checked, uncheck all breeds
-      const newBreedPreferences = Object.keys(syncedState.breedPreferences || {}).reduce(
+      const currentBreedPreferences = getValues('breedPreferences');
+      const newBreedPreferences = Object.keys(currentBreedPreferences || {}).reduce(
         (acc, breed) => ({
           ...acc,
           [breed]: false,
@@ -80,16 +81,11 @@ const SearchForm = () => {
       setValue('all', false, { shouldDirty: true });
     } else {
       // When unchecking a breed, check if it was the last one
-      const currentValues = breeds?.reduce(
-        (acc, b) => ({
-          ...acc,
-          [b]: b === breed ? false : (formState.defaultValues?.breedPreferences?.[b] ?? false),
-        }),
-        {}
-      );
+      const currentBreedPreferences = getValues('breedPreferences');
+      const hasCheckedBreeds = Object.values(currentBreedPreferences || {}).some(v => v);
 
       // If no breeds are checked, turn All back on
-      if (currentValues && !Object.values(currentValues).some((v) => v)) {
+      if (!hasCheckedBreeds) {
         setValue('all', true, { shouldDirty: true });
       }
     }
