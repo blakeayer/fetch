@@ -27,7 +27,7 @@ const SearchForm = () => {
     }
   }, [breeds, initializeBreedPreferences, storeState.breedPreferences]);
 
-  const { register, formState, handleSubmit, reset, setValue, getValues } = useForm<PreferencesData>({
+  const { register, handleSubmit, reset, setValue, getValues } = useForm<PreferencesData>({
     resolver: zodResolver(searchPreferencesSchema),
     defaultValues: syncedState,
   });
